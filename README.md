@@ -25,7 +25,7 @@ css for behavior of menu and buttons when window gets resized
 ## data
 
 ### where to get
-Data can be downloaded as .csv at vacmap.de 
+Data can be downloaded as .csv at www.vacmap.de 
 
 See also [database of cases of notifiable diseases](https://survstat.rki.de/) of the Robert Koch Institute. 
 
