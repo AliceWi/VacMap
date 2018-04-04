@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- gibt die Version des IE vor -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Alice Wittig">
+    <meta name="msapplication-tap-highlight" content="no" />
+
+
+    <title>VacMap</title>
+
+<script src="D3lib/d3.v4.min.js"></script>
+<script src="D3lib/topojson.v1.min.js"></script>
+<script src="measles050218.js"></script>
+<script src="rotaviren.js"></script>
+ <script>
+     (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+
+     ga("create", "UA-97644954-1", "auto");
+     ga("send", "pageview");
+ </script>
+
+
+    <link href="D3lib/bootstrap.min.css" rel="stylesheet">
+    <link href="offcanvas.css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='stylesheet_map.css'/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="german" style="display: none">
+              <div class="pull-left visible-xs visible-sm">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Menü</button>
+                <button type="button" class="infoButton btn btn-primary btn-xs" data-toggle="collapse" data-target="#header" id="infoButton1">Erklärung ausblenden</button>
+                <button type="button" class="englishButton btn btn-primary btn-xs german">English</button>
+                <div class="dropdown">
+                  <button type="button" class="dataButton btn btn-info btn-xs german dropdown-toggle" data-toggle="dropdown">Impfung auswählen
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="measles">Masern</li>
+                    <li class="rotavirus">Rotavirus</li>
+                  </ul>
+                </div> <!-- dropdown button -->
+              </div> <!-- menü+information buttons -->
+              <div class="pull-left visible-md">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Menü</button>
+                <button type="button" class="infoButton btn btn-primary btn-sm" data-toggle="collapse" data-target="#header" id="infoButton1">Erklärung ausblenden</button>
+                <button type="button" class="englishButton btn btn-primary btn-sm german">English</button>
+                <div class="dropdown">
+                  <button type="button" class="dataButton btn btn-info btn-sm german dropdown-toggle" data-toggle="dropdown">Impfung auswählen
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="measles">Masern</li>
+                    <li class="rotavirus">Rotavirus</li>
+                  </ul>
+                </div> <!-- dropdown button -->
+              </div> <!-- menü+information buttons -->
+              <div class="pull-left visible-lg">
+                <button type="button" class="infoButton btn btn-primary btn-sm" data-toggle="collapse" data-target="#header" id="infoButton2">Erklärung ausblenden</button>
+                <button type="button" class="englishButton btn btn-primary btn-sm german">English</button>
+                <div class="dropdown">
+                  <button type="button" class="dataButton btn btn-info btn-sm german dropdown-toggle" data-toggle="dropdown">Impfung auswählen
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="measles">Masern</li>
+                    <li class="rotavirus">Rotavirus</li>
+                  </ul>
+                </div> <!-- dropdown button -->
+              </div> <!-- information button large -->
+            </div> <!-- german buttons -->
+            <div class="english" style="display: none">
+              <div class="pull-left visible-xs visible-sm">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Menue</button>
+                <button type="button" class="infoButton btn btn-primary btn-xs" data-toggle="collapse" data-target="#header" id="infoButton1">Hide information</button>
+                <button type="button" class="germanButton btn btn-primary btn-xs english">Deutsch</button>
+                <div class="dropdown">
+                  <button type="button" class="dataButton btn btn-info btn-xs english dropdown-toggle" data-toggle="dropdown">Select vaccination
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="measles">Measles</li>
+                    <li class="rotavirus">Rotavirus</li>
+                  </ul>
+                </div> <!-- dropdown button -->
+              </div> <!-- menü+information buttons -->
+              <div class="pull-left visible-md">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Menue</button>
+                <button type="button" class="infoButton btn btn-primary btn-sm" data-toggle="collapse" data-target="#header" id="infoButton1">Hide information</button>
+                <button type="button" class="germanButton btn btn-primary btn-sm english">Deutsch</button>
+                <div class="dropdown">
+                  <button type="button" class="dataButton btn btn-info btn-sm english dropdown-toggle" data-toggle="dropdown">Select vaccination
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="measles">Measles</li>
+                    <li class="rotavirus">Rotavirus</li>
+                  </ul>
+                </div> <!-- dropdown button -->
+              </div> <!-- menü+information buttons -->
+              <div class="pull-left visible-lg">
+                <button type="button" class="infoButton btn btn-primary btn-sm" data-toggle="collapse" data-target="#header" id="infoButton2">Hide information</button>
+                <button type="button" class="germanButton btn btn-primary btn-sm english">Deutsch</button>
+                <div class="dropdown">
+                  <button type="button" class="dataButton btn btn-info btn-sm english dropdown-toggle" data-toggle="dropdown">Select vaccination
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="measles">Measles</li>
+                    <li class="rotavirus">Rotavirus</li>
+                  </ul>
+                </div> <!-- dropdown button -->
+              </div> <!-- information button large -->
+            </div> <!-- english buttons -->
+          </div> <!-- col-xs-8 -->
+          <div class="col-xs-4">
+            <a href="http://www.rki.de"><img class="img-responsive" id="rkiLogo" src="RKI-Logo_RGB_P300C_web.jpg" alt="Logo Robert Koch Institut" width="250" height="100"></a>
+
+            <a href="http://www.hu-berlin.de"><img class="img-responsive" id="huLogo" src="husiegel_bw.gif" alt="Logo Humboldt Universität" width="95" height="95"></a>
+
+            <a href="http://www.bundesgesundheitsministerium.de"><img class="img-responsive" id="bmgLogo" src="BMG_Web_de_WBZ.gif" alt="Logo Bundesministerium für Gesundheit" width="100" height="100"></a>
+          </div> <!-- col-xs-4 -->
+        </div> <!-- first row -->
+
+        <div class="row">
+          <div class="col-xs-12">
+            <h1 class="german measles" style="display: none">VacMap - Masern-Impfquoten in Deutschland</h1>
+            <h1 class="english measles" style="display: none">VacMap - Measles Vaccination Coverage in Germany</h1>
+            <h1 class="german rotavirus" style="display: none">VacMap - Rotavirus-Impfquoten in Deutschland</h1>
+            <h1 class="english rotavirus" style="display: none">VacMap - Rotavirus Vaccination Coverage in Germany</h1>
+          </div> <!-- col-xs-12 -->
+        </div> <!-- second row -->
+
+          <div class="page-header">
+            <div id="header" class="collapse in">
+
+              <div class="row alignLinks">
+                <div class="col-xs-9">
+                  <p id="author" class="description german" style="display: none">Entwicklung: Alice Wittig<br>
+                  <a href="http://rocs.hu-berlin.de">Brockmann Lab</a>, Institut für Biologie, Humboldt Universität zu Berlin &amp; Robert Koch-Institut</p>
+                  <p class="description german" style="display: none">Datengrundlage: Thorsten Rieck<br>
+                  KV-Impfsurveillance, Fachgebiet Impfprävention, Robert Koch-Institut</p>
+                  <p class="description german" style="display: none">VacMap ist eine interaktive Visualisierung des Impfstatus in Deutschland. VacMap vermittelt ein qualitatives, quantitatives und regional aufgelöstes Gesamtbild der Impfquoten. Durch Klicken auf die Karte wird das jeweilige Bundesland vergrößert dargestellt und in den Balkendiagrammen hervorgehoben. Durch erneutes Klicken wird wieder die gesamte Karte gezeigt. Die Balkendiagramme stellen die ausgewählten Impfquoten in den Kontext mit den übrigen Jahrgängen und Altersgruppen.
+                  </p>
+                  <p class="description end-description german measles" style="display: none">
+                  In der Karte werden Masern-Impfquoten farbkodiert dargestellt. Dabei orientiert sich die Farbwahl an dem Ziel Masern erfolgreich zu eliminieren. VacMap nutzt als Datengrundlage die KV-Impfsurveillance. Die KV-Impfsurveillance wird vom Robert Koch-Institut koordiniert und gemeinschaftlich mit allen Kassenärztlichen Vereinigungen durchgeführt. In der KV-Impfsurveillance wird der Impfstatus aus ambulanten Abrechnungsdaten der gesetzlich Krankenversicherten ermittelt.
+                  </p>
+                  <p class="description end-description german rotavirus" style="display: none">
+                  In der Karte werden Rotavirus-Impfquoten farbkodiert dargestellt. VacMap nutzt als Datengrundlage die KV-Impfsurveillance. Die KV-Impfsurveillance wird vom Robert Koch-Institut koordiniert und gemeinschaftlich mit allen Kassenärztlichen Vereinigungen durchgeführt. In der KV-Impfsurveillance wird der Impfstatus aus ambulanten Abrechnungsdaten der gesetzlich Krankenversicherten ermittelt.
+                  </p>
+
+                  <p id="author" class="description english" style="display: none">Created by Alice Wittig<br>
+                  <a href="http://rocs.hu-berlin.de">Brockmann Lab</a>, Institute for Biology, Humboldt University of Berlin &amp; Robert Koch Institute</p>
+                  <p class="description english" style="display: none">Data set by Thorsten Rieck<br>
+                  KV-Impfsurveillance (ASHIP vaccination monitoring), Immunization unit, Robert Koch Institute</p>
+                  <p class="description english" style="display: none">VacMap is an interactive visualization of the vaccination status in Germany. VacMap conveys a qualitative and quantitative representation of the vaccination coverage at regional resolution. Click on the map to zoom into a particular federal state. Your selection will be highlighted in the bar charts. Click on the map to zoom out again. The bar charts put the selected vaccination coverage in context with the other birth cohorts and age-groups.
+                  </p>
+                  <p class="description end-description english measles" style="display: none">The map displays color coded measles vaccination coverage. The color range follows the measles elimination goals. VacMap displays data from the "KV-Impfsurveillance" (ASHIP vaccination monitoring). The KV-Impfsurveillance is coordinated by the Robert Koch Institute and conducted in joint cooperation with all Association of Statutory Health Insurance Physicians (ASHIPs). In the KV-Impfsurveillance the vaccination status is determined from health insurance claims data generated by all statutory health insurance physicians for outpatient care.
+                  </p>
+                  <p class="description end-description english rotavirus" style="display: none">The map displays color coded rotavirus vaccination coverage. VacMap displays data from the "KV-Impfsurveillance" (ASHIP vaccination monitoring). The KV-Impfsurveillance is coordinated by the Robert Koch Institute and conducted in joint cooperation with all Association of Statutory Health Insurance Physicians (ASHIPs). In the KV-Impfsurveillance the vaccination status is determined from health insurance claims data generated by all statutory health insurance physicians for outpatient care.
+                  </p>
+                </div> <!-- col-xs-8 -->
+                <div class="col-xs-3 description" id="infoLinks">
+                  <p class="german measles" style="display: none">Datenstand: 1. Dezember 2017</p>
+                  <p class="german rotavirus" style="display: none">Datenstand: 1. Dezember 2017</p>
+                  <p class="german" style="display: none">Kontakt: <a href="mailto:info@vacmap.de">info@vacmap.de</a></p>
+                  <p class="german" style="display: none">Weitere Informationen:<br></p>
+                  <a target="_blank" href="http://www.rki.de/impfen" class="german" style="display: none">www.rki.de/impfen</a>
+                  <a target="_blank" href="http://www.rki.de/masernelimination" class="german measles" style="display: none">www.rki.de/masernelimination</a>
+                  <a target="_blank" href="https://www.rki.de/DE/Content/InfAZ/R/Rotaviren/Rotaviren.html?cms_box=1&cms_current=Rotavirus-Infektionen&cms_lv2=2393292" class="german rotavirus" style="display: none">Rotavirus-Infektionen RKI-Info</a>
+                  <a target="_blank" href="http://www.rki.de/kv-impfsurveillance" class="german" style="display: none">www.rki.de/kv-impfsurveillance</a>
+                  <a target="_blank" href="http://rocs.hu-berlin.de" class="german" style="display: none">www.rocs.hu-berlin.de</a>
+
+                  <p class="english measles" style="display: none">Data status: December, 1st 2017</p>
+                  <p class="english rotavirus" style="display: none">Data status: December, 1st 2017</p>
+                  <p class="english" style="display: none">Contact: <a href="mailto:info@vacmap.de">info@vacmap.de</a></p>
+                  <p class="english" style="display: none">Further information:<br></p>
+                  <a target="_blank" href="http://www.rki.de/impfen" class="english" style="display: none">www.rki.de/impfen</a>
+                  <a target="_blank" href="http://www.rki.de/masernelimination" class="english measles" style="display: none">www.rki.de/masernelimination</a>
+                  <a target="_blank" href="https://www.rki.de/DE/Content/InfAZ/R/Rotaviren/Rotaviren.html?cms_box=1&cms_current=Rotavirus-Infektionen&cms_lv2=2393292" class="english rotavirus" style="display: none">Rotavirus-Infektionen  RKI-Info</a>
+                  <a target="_blank" href="http://www.rki.de/kv-impfsurveillance" class="english" style="display: none">www.rki.de/kv-impfsurveillance</a>
+                  <a target="_blank" href="http://rocs.hu-berlin.de" class="english" style="display: none">www.rocs.hu-berlin.de</a>
+                </div> <!-- col-xs-4 -->
+              </div> <!-- third row -->
+            </div> <!-- #header, .collapse in -->
+          </div> <!-- .page-header -->
+
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="row">
+          <div class="col-lg-2 sidebar-offcanvas">
+            <div id="sidebarLeft"></div>
+            <div class="buttons visible-xs visible-sm">
+              <div class="german" style="display: none">
+                <button type="button" class="switchBlLk btn btn-default btn-xs" data-toggle="tooltip" title="Wechselt zwischen Kreis-, Bundesland- und KV-Ebene">Regionalität</button>
+                <button type="button" class="switchStadt btn btn-default btn-xs" data-toggle="tooltip" title="Blendet die Städtenamen aus und ein">Städtenamen</button>
+                <a href="#" class="export" role="button"><button type="button" class="downloadButton btn btn-default btn-xs" data-toggle="tooltip" title="Bietet die aktuelle Auswahl zum Download als .csv-Datei an">Daten-Download</button></a>
+              </div> <!-- class german -->
+              <div class="english" style="display: none">
+                <button type="button" class="switchBlLk btn btn-default btn-xs" data-toggle="tooltip" title="Switches between counties, states and ASHIPs">Regionality</button>
+                <button type="button" class="switchStadt btn btn-default btn-xs" data-toggle="tooltip" title="Fades in and out the city names">City labels</button>
+                <a href="#" class="export" role="button"><button type="button" class="downloadButton btn btn-default btn-xs" data-toggle="tooltip" title="Downloads the current selection as .csv-file">Data download</button></a>
+              </div> <!-- class english -->
+            </div>
+            <div class="buttons visible-md visible-lg">
+              <div class="german" style="display: none">
+                <button type="button" class="switchBlLk btn btn-default btn-sm" data-toggle="tooltip" title="Wechselt zwischen Kreis-, Bundesland- und KV-Ebene">Regionalität</button>
+                <button type="button" class="switchStadt btn btn-default btn-sm" data-toggle="tooltip" title="Blendet die Städtenamen aus und ein">Städtenamen</button>
+                <a class="export" role="button"><button type="button" class="downloadButton btn btn-default btn-sm" data-toggle="tooltip" title="Bietet die aktuelle Auswahl zum Download als .csv-Datei an">Daten-Download</button></a>
+              </div> <!-- class german -->
+              <div class="english" style="display: none">
+                <button type="button" class="switchBlLk btn btn-default btn-sm" data-toggle="tooltip" title="Switches between counties, states and ASHIPs">Regionality</button>
+                <button type="button" class="switchStadt btn btn-default btn-sm" data-toggle="tooltip" title="Fades in and out the city names">City labels</button>
+                <a href="#" class="export" role="button"><button type="button" class="downloadButton btn btn-default btn-sm" data-toggle="tooltip" title="Downloads the current selection as .csv-file">Data download</button></a>
+              </div> <!-- class english -->
+            </div>
+          </div> <!-- sidebarLeft -->
+          <div class="col-xs-8 col-lg-6" id="bild">
+            <div id="representation"></div>
+          </div>
+          <div class="col-xs-4 col-lg-4" id="sidebarRight">
+            <p id="titelMean" class="titel"></p>
+            <p id="barchartMeanPosition" class="pBarchart"></p>
+            <p id="titelBL" class="titel"></p>
+            <p id="barchart0Position" class="pBarchart"></p>
+            <p id="titelKV" class="titel"></p>
+            <p id="barchartKVPosition" class="pBarchart"></p>
+            <p id="titel3" class="titel"></p>
+            <p id="barchart3Position" class="pBarchart"></p>
+            <p id="circlesPosition"></p>
+            <p id="barchart4Position" class="pBarchart"></p>
+            <p id="blTitel" class="titel"></p>
+            <p id="lkTitel" class="titel"></p>
+            <p id="titelJG" class="titel"></p>
+            <p id="barchart1Position" class="pBarchart"></p>
+            <p id="barchart1BLPosition" class="pBarchart"></p>
+            <p id="barchart1KVPosition" class="pBarchart"></p>
+            <p id="titelAG" class="titel"></p>
+            <p id="barchart2Position" class="pBarchart"></p>
+            <p id="barchart2BLPosition" class="pBarchart"></p>
+            <p id="barchart2KVPosition" class="pBarchart"></p>
+          </div> <!-- sidebarRight -->
+        </div> <!-- row -->
+      </div> <!-- row-offcanvas -->
+<!--       <div class="row">
+        <button type="button" class="pull-right englishButton btn btn-sm german">English</button>
+        <button type="button" class="pull-right germanButton btn btn-sm english">Deutsch</button>
+      </div> -->
+    </div> <!-- .container -->
+
+    <script src="D3lib/jquery.min.js"></script>
+    <script src="D3lib/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      //Browsersprache auslesen
+
+      browserLanguage = navigator.language; //de = deutsch
+      IEbrowserLanguage = navigator.browserLanguage;
+
+      if(browserLanguage === "de"){
+        german = true;
+      }else if(IEbrowserLanguage === "de-DE"){
+        german = true;
+      }else{
+        german = false;
+      }
+
+      //um zu checken, ob Benutzer mit Mobile Device auf der Seite ist, hilft Click etc anzupassen
+      var isMobile = {
+          Android: function() {
+              return navigator.userAgent.match(/Android/i);
+          },
+          BlackBerry: function() {
+              return navigator.userAgent.match(/BlackBerry/i);
+          },
+          iOS: function() {
+              return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+          },
+          Opera: function() {
+              return navigator.userAgent.match(/Opera Mini/i);
+          },
+          Windows: function() {
+              return navigator.userAgent.match(/IEMobile/i);
+          },
+          any: function() {
+              return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+          }
+      };
+
+      // initial dataset
+      datasetobj = dataMeasles; //rotavirus;//
+      datasetname = "dataMeasles"; //"rotavirus"//
+    </script>
+
+    <script src="script_map.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+to find at www.vacmap.de
+
+compatible with Firefox, Google Chrome, Safari and IE
+
+
+====Files====
+
+germany_23_6_17_ohneBerlin.json
+-topojson data of Germany, see also my other GitHub repo https://github.com/AliceWi/TopoJSON-Germany
+
+measles050218.js
+rotaviren.js
+-data files
+
+/D3lib
+-library, includes bootstrap (https://getbootstrap.com/), d3 (https://d3js.org/), jquery (https://jquery.com/) and topojson (https://github.com/topojson/topojson)
+
+/jsdoc
+-documentary, made with love and JSDoc (http://usejsdoc.org/)
+
+offcanvas.css
+-css for behavior of menu and buttons when window gets resized

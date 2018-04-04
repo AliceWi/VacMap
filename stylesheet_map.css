@@ -1,0 +1,311 @@
+svg{
+ /* border:1px solid black;*/
+  width: 100%;
+}
+
+html,body {
+  /*text-align: center;*/
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+body { /* Stellt das default context menü bei longpress aus */
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+}
+
+img{ 
+  position: relative;
+  top: 10px;
+  right: 15px;
+  text-align: right;
+  width: 50%; /*betrifft rki logo*/
+  z-index: -1;
+}
+
+.dropdown{
+  display: inline;
+}
+li.measles{
+  cursor: pointer;
+}
+li.rotavirus{
+  cursor: pointer;
+}
+
+.alignLinks{
+  position: relative;
+}
+
+#huLogo{
+  position: absolute;
+  top: 5px;
+  right: 36%;  /*170px*/
+  width: 18%;
+  z-index: 10;
+}
+
+#bmgLogo{
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 39%;
+  z-index: 1;
+}
+
+#infoLinks{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.page-header{
+margin-top: 0%;
+margin-left: .3%;
+margin-right: .3%;
+}
+
+div#sidebarLeft, div#container, div#sidebarRight, div.buttons{
+  padding-left: 30px;
+}
+
+div.description{
+  display: inline;
+}
+
+.end-description{
+  margin-bottom: 0;
+}
+
+#more-info-farbcode-button, #more-info-kv-button{
+ cursor: pointer;
+}
+
+.boxRow {
+  cursor: pointer;
+}
+
+.box0_empty, .box1_empty, .box2_empty{
+  cursor: default;
+}
+
+td {
+  padding:2px;
+}
+
+.tableheader {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  cursor: default;
+}
+
+table {
+  margin-bottom:10px;
+  padding:5px;
+}
+
+.leftBoxtd, .boxtd, .box0 {
+  padding-right: 20px;
+  border-radius:5px; 
+}
+
+.leftBoxtd_selected, .box0_selected, .box1_selected, .box2_selected {
+  padding-right: 10px;
+  background-color: #ffece7;/*#ff3f3f;*/
+  border-radius:5px;
+}
+
+.leftBoxtd:hover, .box0:hover, .box1:hover, .box2:hover {
+  padding-right: 10px;
+  background-color: lightgrey;
+  border-radius:5px;
+}
+
+.caption {
+  font-weight: bold;
+  fill: #000;
+}
+
+text {
+  pointer-events: none;
+}
+
+.subunit-boundary {
+  fill: none;
+  stroke-width: .5px;
+  stroke: #777;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/*.kv-subunit-boundary {
+  fill: none;
+  stroke-width: .5px;
+  stroke: #777;
+  stroke-linejoin: round;
+  pointer-events: none;
+}*/
+
+.states {
+  fill: none;
+  stroke: #777;
+  stroke-width: .7px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.boundary {
+  fill: none;
+  stroke-width: 1px;
+  stroke: #777;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.kv {
+  fill: none;
+  stroke: #777;
+  stroke-width: .7px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/*.kv-boundary {
+  fill: none;
+  stroke-width: 1px;
+  stroke: blue;
+  stroke-linejoin: round;
+  pointer-events: none;
+}*/
+
+.place,
+.place-label {
+  fill: #000000;
+  pointer-events: none;
+}
+
+#tipbarchart{
+  font-size: 10px;
+}
+
+#tipbarchart2{
+  font-size: 10px;
+}
+
+.hovered{
+  cursor: pointer;
+  stroke: black;
+  pointer-events: none;
+  fill: none;
+  stroke-linejoin: round;
+}
+
+.blhovered{
+ stroke: #2f4f4f;
+ fill: none;
+}
+
+#barchart4Position{
+  margin-top: 0px;
+}
+
+#barchart3Position{
+  margin-bottom: 0px;
+}
+
+#circlesPosition{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+@media screen and (min-width: 0px) {
+  .titel, .description, #sidebarLeft, .tooltips,#more-info-farbcode, #more-info-kv, .downloadButton, .tooltip, .switchStadt, .switchBlLk{
+    font-size: 7px;
+  }
+  h1{
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .titel, .description, #sidebarLeft, .tooltips,#more-info-farbcode, #more-info-kv, .downloadButton, .tooltip, .switchStadt, .switchBlLk{
+    font-size: 10px;
+  }
+  h1{
+    font-size: 30px;
+  } 
+}
+@media screen and (min-width: 992px) {
+  .titel, .description, #sidebarLeft, .tooltips,#more-info-farbcode, #more-info-kv, .downloadButton, .tooltip, .switchStadt, .switchBlLk{
+    font-size: 12px;
+  }
+  h1{
+    font-size: 36px;
+  }
+}
+
+.tooltips {
+  position: absolute;
+  padding: 8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #ddd;
+  opacity: 0.9;
+  pointer-events: none;
+  border:1px solid black;
+  color: black;
+}
+
+ /*Creates a small triangle extender for the tooltip */
+.tooltips:after {
+  /*box-sizing: border-box;*/
+  display: block;
+  font-size: 10px;
+  width: 90%;
+  line-height: 2.3;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.button {
+  stroke: #000;
+  stroke-width: 1px;
+  fill: white;
+}
+
+.selectedButton {
+  stroke: #000;
+  stroke-width: 1px;
+  fill: #727272;
+}
+
+.togglesTitle {
+  font-weight:bold;
+}
+
+.stadtOnOff, .blOnOff{
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.tooltip{
+  width: 80%;
+}
+
+.tooltip > .tooltip-inner{
+  background-color: lightgrey;
+  color: black;
+  border: 1px solid grey; 
+
+}
+.downloadButton, .switchStadt, .switchBlLk{
+  width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
+  background-color: #ffece7; 
+}
+
+.longpress {
+    -webkit-animation: 1s longpress;
+            animation: 1s longpress;
+}

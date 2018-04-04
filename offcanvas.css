@@ -1,0 +1,57 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 1199px) { /*991*/
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out; /*Schnelligkeit, womit Liste herausfährt*/
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+  .container{
+    width: 100%;
+  }
+
+    .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -34%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -34%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 34%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 34%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 34%; 
+    height: 100%;
+    overflow: scroll;
+  }
+}
